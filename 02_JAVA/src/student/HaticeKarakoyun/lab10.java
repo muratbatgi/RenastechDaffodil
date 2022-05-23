@@ -9,5 +9,39 @@ public class lab10 {
 
     public static void main(String[] args) {
 
+        finRa(1,30);
+
     }
-}
+
+    public static void finRa(int x,int y){
+
+        for (int i = x; i < y; i++) {
+            if (i%3==0){
+                System.out.println("FIN");
+            }
+            if(i%5==0){
+                System.out.println("RA");
+            }
+            if (i%3==0&&i%5==0){
+                System.out.print("FINRA");
+            }
+
+        }
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+    }
+
+
+
+
