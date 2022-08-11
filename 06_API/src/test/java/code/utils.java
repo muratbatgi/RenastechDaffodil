@@ -1,7 +1,7 @@
 package code;
 
 import io.restassured.response.Response;
-
+import com.github.javafaker.Faker;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 
@@ -22,8 +22,10 @@ public class utils {
 
     public static String bearerToken(){
 
-        String clientName = "Barisss";
-        String clientEmail = "ramp@gmail.com";
+        Faker faker = new Faker();
+
+        String clientName = faker.name().fullName();
+        String clientEmail = faker.internet().emailAddress();
 
         JSONObject object = new JSONObject();
 
@@ -32,7 +34,9 @@ public class utils {
 
         String payload = object.toString();
 
-        RequestSpecification generateTokenRequest = given().header("Content-Type", "application/json").body(payload);
+        RequestSpecification generateTokenRequest = given()
+                .header("Content-Type", "application/json")
+                .body(payload);
         Response generateTokenResponse = generateTokenRequest.when().post("/api-clients");
 
         generateTokenResponse.then().assertThat().statusCode(201);

@@ -12,4 +12,6 @@ public class POSTToken {
     void token(){
         System.out.println(utils.bearerToken());
     }
+
+
 }
