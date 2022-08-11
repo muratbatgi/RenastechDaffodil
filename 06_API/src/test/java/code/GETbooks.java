@@ -54,7 +54,8 @@ public class GETbooks {
     void userRetrieveListOfTheBooksTypeFiction(){
 
         //Given
-        RequestSpecification requestBody = given().queryParam("type", "fiction");
+        RequestSpecification requestBody = given()
+                .queryParams("type","fiction","limit",1);
 
         //When
         Response response = requestBody.when().get("/books");
