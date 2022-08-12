@@ -1,7 +1,7 @@
 package src.test.java.students.gulsum;
 
-public class lab02 {}
-//    1. Show all job_id and average salary who work as any of these jobs IT_PROG, SA_REP, FI_ACCOUNT, AD_VP
+public class lab03 {
+    //    1. Show all job_id and average salary who work as any of these jobs IT_PROG, SA_REP, FI_ACCOUNT, AD_VP
 //            select job_id, AVG(salary) from employees Where job_id IN ('IT_PROG', 'SA_REP', 'FI_ACCOUNT', 'AD_VP') group by job_id;
 //    2. Show all records whose last name contains 2 lowercase 'a's
 //            select * from employees where last_name like '%a%a%';
@@ -29,3 +29,4 @@ public class lab02 {}
 //    11. Display all employee, and their manager's name
 //            select first_name,last_name,manager_id from employees;
 
+}
