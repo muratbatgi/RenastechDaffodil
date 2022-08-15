@@ -54,18 +54,19 @@ public class GETbooks {
     void userRetrieveListOfTheBooksTypeFiction(){
 
         //Given
-        RequestSpecification requestBody = given().queryParam("type", "fiction");
+        RequestSpecification requestBody = given()
+                .queryParams("type","fiction","limit",1);
 
         //When
         Response response = requestBody.when().get("/books");
 
         //Then
         response.then().assertThat().statusCode(200);
-
-        System.out.println(response.getBody().asString());
         String type = response.jsonPath().getString("[0].type");
+        Assert.assertEquals(type, "fiction");
 
-        System.out.println(type);
+        //System.out.println(response.getBody().asString());
+        //System.out.println(type);
 
     }
 
@@ -95,7 +96,26 @@ public class GETbooks {
         Response response = requestBody.when().get("/books");
 
         // Then
-        response.then().assertThat().statusCode(400);
+        response.then().assertThat().statusCode(400); //404
+    }
 
+    // test run, regression 2000, %90, 200 //10 20 "auto failed"
+
+    // intellij
+    // Locally passed, failed, passed
+
+    @Test
+    (description = "Given baseUrl When make Get call to books/:bookId Then Verify status code equal to 200 and get book information")
+    void userRetrieveSingleBookInformation(){
+
+        String bookId = utils.bookId();
+
+        RequestSpecification requestBody = given().pathParam("bookId",bookId);
+
+        Response response = requestBody.when().get("/books/{bookId}");
+
+        response.then().assertThat().statusCode(200);
+
+        System.out.println(response.getBody().asString());
     }
 }
